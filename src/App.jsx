@@ -4,20 +4,20 @@ import {
   Routes
 } from "react-router-dom";
 
-import Create from './components/create-component/create-component';
-import Read from './components/read-component/read-component';
+import Create from './components/create/create.component';
+import Read from './components/read/read.component';
+import Update from './components/update/update.component';
 
 import './App.css'
 
 function App() {
 
   return (
-    <Router>
-      <Routes>
-        <Route path="/" exact element={< Create />}></Route>
-        <Route path="/read" exact element={<Read />}></Route>
-      </Routes>
-    </Router >
+    <Routes>
+      <Route path="/" exact element={<Create />}></Route>
+      <Route path="/read" exact element={<Read />}></Route>
+      <Route path="/update" exact element={<Update />}></Route>
+    </Routes>
   )
 }
 
