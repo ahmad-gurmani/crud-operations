@@ -16,12 +16,6 @@ const Read = () => {
             });
     }
 
-    const setToLocalStorage = ({ id, name, email }) => {
-        localStorage.setItem("id", id);
-        localStorage.setItem("name", name);
-        localStorage.setItem("email", email);
-    }
-
     const handelDelete = (id) => {
         axios
             .delete(`${baseUrl}/${id}`)
@@ -36,8 +30,8 @@ const Read = () => {
 
     return (
         <Fragment>
-            <div class="form-check form-switch">
-                <input class="form-check-input" type="checkbox" onClick={() => setTableDark(!tabledark)} />
+            <div className="form-check form-switch">
+                <input className="form-check-input" type="checkbox" onClick={() => setTableDark(!tabledark)} />
             </div>
             <div className='d-flex justify-content-between mb-4'>
                 <h1 className='fs-1 m-0'>Read operation</h1>
@@ -63,10 +57,8 @@ const Read = () => {
                                 <td>{eachData.name}</td>
                                 <td>{eachData.email}</td>
                                 <td>
-                                    <Link to="/update">
-                                        <button type="button" onClick={() => setToLocalStorage(
-                                            { id: eachData.id, name: eachData.name, email: eachData.email }
-                                        )} className="btn btn-success">Edit</button>
+                                    <Link to={`/update/${eachData.id}`}>
+                                        <button type="button" className="btn btn-success">Edit</button>
                                     </Link>
 
                                 </td>

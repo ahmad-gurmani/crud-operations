@@ -1,19 +1,25 @@
 import React, { Fragment, useState, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 
 import { baseUrl } from '../create/create.component';
 import axios from 'axios';
 
 function Update() {
     const navigate = useNavigate();
-    const [id, setId] = useState();
+    const { id } = useParams();
     const [name, setName] = useState();
     const [email, setEmail] = useState();
 
     useEffect(() => {
-        setId(localStorage.getItem("id"));
-        setName(localStorage.getItem("name"));
-        setEmail(localStorage.getItem("email"));
+        axios.
+            get(`${baseUrl}/${id}`)
+            .then(
+                (res) => {
+                    const { email, name } = res.data;
+                    setName(name);
+                    setEmail(email);
+                }
+            )
     }, []);
 
     const handleUpdate = (e) => {

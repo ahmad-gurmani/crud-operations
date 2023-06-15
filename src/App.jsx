@@ -16,7 +16,7 @@ function App() {
     <Routes>
       <Route path="/" exact element={<Create />}></Route>
       <Route path="/read" exact element={<Read />}></Route>
-      <Route path="/update" exact element={<Update />}></Route>
+      <Route path="/update/:id" exact element={<Update />}></Route>
     </Routes>
   )
 }
